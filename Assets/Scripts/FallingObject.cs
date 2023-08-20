@@ -57,6 +57,8 @@ public abstract class FallingObject : MonoBehaviour
         Debug.Log($"{gameObject.name} {Type} touched ground");
         OnTouchGround();
     }
+
+    public void ChangeColor(Color newColor) => GetComponent<Renderer>().material.color = newColor;
 }
 
 
