@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Cube : FallingObject
 {
-    public override ObjectType ObjectType => ObjectType.Cube;
+    public override ObjectType Type => ObjectType.Cube;
 
-    protected override void Explode() => GetComponent<ParticleSystem>().Play();
+    protected override void OnTouchGround() => GetComponent<ParticleSystem>().Play();
 }
