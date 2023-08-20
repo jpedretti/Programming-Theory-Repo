@@ -1,27 +1,16 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public abstract class FallingObject : MonoBehaviour
+public abstract class FallingObject : MonoBehaviour // INHERITANCE
 {
     public abstract ObjectType Type { get; }
-    public bool IsGrounded
-    {
-        get
-        {
-            return _isGrounded;
-        }
-        private set
-        {
-            _isGrounded = value;
-        }
-    }
-
-    public float FallSpeed
+    public bool IsGrounded { get; private set; } = false;
+    public float FallSpeed // ENCAPSULATION
     {
         get { return _fallSpeed; }
         protected set
         {
-            if (value > 0)
+            if (value >= 0)
             {
                 Debug.LogError("FallSpeed must be negative, it's falling after all.");
                 return;
@@ -31,9 +20,8 @@ public abstract class FallingObject : MonoBehaviour
         }
     }
 
-    protected abstract void OnTouchGround();
+    protected abstract void OnTouchGround(); // POLYMORPHISM
 
-    private bool _isGrounded = false;
     private Rigidbody _rigidBody;
     private float _fallSpeed = -10;
 
@@ -58,7 +46,5 @@ public abstract class FallingObject : MonoBehaviour
         OnTouchGround();
     }
 
-    public void ChangeColor(Color newColor) => GetComponent<Renderer>().material.color = newColor;
+    public void ChangeColor(Color newColor) => GetComponent<Renderer>().material.color = newColor; // ABSTRACTION
 }
-
-
