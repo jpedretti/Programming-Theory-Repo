@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Cylinder : FallingObject
 {
-    public override ObjectType ObjectType => ObjectType.Cylinder;
+    public override ObjectType Type => ObjectType.Cylinder;
 
-    protected override void Explode() => Destroy(gameObject);
+    protected override void OnTouchGround() => Destroy(gameObject);
 }

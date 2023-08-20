@@ -2,7 +2,13 @@ using UnityEngine;
 
 public class Sphere : FallingObject
 {
-    public override ObjectType ObjectType => ObjectType.Sphere;
+    public override ObjectType Type => ObjectType.Sphere;
 
-    protected override void Explode() => GetComponent<AudioSource>().Play();
+    public override void Start()
+    {
+        base.Start();
+        FallSpeed = -20;
+    }
+
+    protected override void OnTouchGround() => GetComponent<AudioSource>().Play();
 }
